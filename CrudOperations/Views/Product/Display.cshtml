@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CrudOperations.Models.Product>
+@model IEnumerable<CrudOperations.Models.Product>
 @{
     ViewBag.Title = "Product Display";
 }
@@ -24,7 +24,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #008080; /* Primary Teal Color */
+            background-color: #008080; 
             padding: 1rem;
         }
 
@@ -53,7 +53,7 @@
             }
 
                 .nav-links a:hover {
-                    background-color: #FF7F50; /* Coral Color for Hover */
+                    background-color: #FF7F50; 
                     color: white;
                 }
 
@@ -64,7 +64,7 @@
 
         .table {
             width: 80%;
-            margin: auto; /* Center the table */
+            margin: auto; 
             border-collapse: collapse;
         }
 
@@ -75,49 +75,49 @@
             }
 
             .table th {
-                background-color: #008080; /* Teal background for header */
-                color: white; /* White text for header */
+                background-color: #008080; 
+                color: white; 
             }
 
             .table tr:nth-child(even) {
-                background-color: #f2f2f2; /* Zebra striping for rows */
+                background-color: #f2f2f2; 
             }
 
         .btn {
-            background-color: #008080; /* Teal button color */
+            background-color: #008080; 
             color: white;
             padding: 10px 15px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             text-decoration: none;
-            margin-right: 5px; /* Space between buttons */
-            transition: background-color 0.3s; /* Transition effect */
+            margin-right: 5px; 
+            transition: background-color 0.3s; 
         }
 
         .btn-warning {
-            background-color: #FFC107; /* Yellow for edit button */
-            color: black; /* Black text for contrast */
+            background-color: #FFC107; 
+            color: black; 
         }
 
             .btn-warning:hover {
-                background-color: #FFCA2C; /* Darker yellow on hover */
+                background-color: #FFCA2C; 
             }
 
         .btn-info {
-            background-color: #17A2B8; /* Info color */
+            background-color: #17A2B8; 
         }
 
             .btn-info:hover {
-                background-color: #138496; /* Darker info color on hover */
+                background-color: #138496;
             }
 
         .btn-danger {
-            background-color: #DC3545; /* Danger color */
+            background-color: #DC3545; 
         }
 
             .btn-danger:hover {
-                background-color: #C82333; /* Darker danger color on hover */
+                background-color: #C82333;
             }
 
         .pagination {
@@ -132,38 +132,37 @@
             }
 
                 .pagination li.active a {
-                    background-color: #008080; /* Teal for active page */
-                    color: white; /* White text for active page */
+                    background-color: #008080; 
+                    color: white; 
                 }
 
         .page-link {
             text-decoration: none;
-            color: #007BFF; /* Link color */
+            color: #007BFF; 
             padding: 10px 15px;
-            border: 1px solid #007BFF; /* Border for pagination links */
+            border: 1px solid #007BFF; 
             border-radius: 5px;
             transition: background-color 0.3s;
         }
 
             .page-link:hover {
-                background-color: #007BFF; /* Darker blue on hover */
-                color: white; /* White text on hover */
+                background-color: #007BFF; 
+                color: white; 
             }
 
         .btn-primary {
             margin-top: 20px;
-            background-color: #008080; /* Teal button color */
+            background-color: #008080;
             color: white;
             padding: 10px 15px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             text-decoration: none;
-            transition: background-color 0.3s; /* Transition effect */
-        }
+            transition: background-color 0.3s; 
 
             .btn-primary:hover {
-                background-color: #FF7F50; /* Coral color on hover */
+                background-color: #FF7F50; 
             }
     </style>
 </head>
@@ -205,7 +204,7 @@
         </tbody>
     </table>
 
-    <!-- Pagination Controls -->
+  
     <nav>
         <ul class="pagination">
             @for (int i = 1; i <= ViewBag.TotalPages; i++)
