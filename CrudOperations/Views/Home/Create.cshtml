@@ -1,4 +1,4 @@
-﻿@model CrudOperations.Models.Category
+@model CrudOperations.Models.Category
 
 @{
     ViewBag.Title = "Create Category";
@@ -25,7 +25,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #008080; /* Primary Teal Color */
+            background-color: #008080; 
             padding: 1rem;
         }
 
@@ -54,33 +54,33 @@
             }
 
                 .nav-links a:hover {
-                    background-color: #FF7F50; /* Coral Color for Hover */
+                    background-color: #FF7F50; 
                     color: white;
                 }
 
         .form-horizontal {
             width: 60%;
-            margin: 20px auto; /* Center the form */
+            margin: 20px auto;
             padding: 20px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            background-color: #f9f9f9; /* Light background for the form */
+            background-color: #f9f9f9; 
         }
 
         .btn {
-            background-color: #008080; /* Teal button color */
+            background-color: #008080; 
             color: white;
             padding: 10px 15px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             text-decoration: none;
-            margin-right: 5px; /* Space between buttons */
-            transition: background-color 0.3s; /* Transition effect */
+            margin-right: 5px; 
+            transition: background-color 0.3s; 
         }
 
             .btn:hover {
-                background-color: #FF7F50; /* Coral color on hover */
+                background-color: #FF7F50; 
             }
     </style>
 </head>
@@ -113,7 +113,7 @@
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Create" class="btn" />
-                    @Html.ActionLink("Back to List", "Display", null, new { @class = "btn" }) <!-- Consistent styling for the Back to List button -->
+                    @Html.ActionLink("Back to List", "Display", null, new { @class = "btn" }) 
                 </div>
             </div>
         </div>
