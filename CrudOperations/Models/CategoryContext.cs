@@ -8,11 +8,11 @@ namespace CrudOperations.Models
 {
     public class CategoryContext : DbContext
     {
-        public CategoryContext() : base("name=CategoryContext") // Ensure this matches your connection string name
+        public CategoryContext() : base("name=CategoryContext") 
         {
         }
 
         public DbSet<Category> Categories { get; set; }
-        public DbSet<Product> Products { get; set; } // If you have a Product model
+        public DbSet<Product> Products { get; set; }
     }
 }
