@@ -1,0 +1,156 @@
+﻿@model CrudOperations.Models.Product
+
+@{
+    ViewBag.Title = "Product Details";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #008080; /* Primary Teal Color */
+            padding: 1rem;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+            .nav-links li {
+                margin: 0 15px;
+            }
+
+            .nav-links a {
+                text-decoration: none;
+                color: white;
+                font-size: 1.1rem;
+                transition: color 0.3s, background-color 0.3s;
+                padding: 8px 15px;
+                border-radius: 5px;
+            }
+
+                .nav-links a:hover {
+                    background-color: #FF7F50; /* Coral Color for Hover */
+                    color: white;
+                }
+
+        .container {
+            width: 60%;
+            margin: 20px auto; /* Center the content */
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9; /* Light background for the content */
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h4 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .dl-horizontal {
+            display: flex;
+            flex-direction: column;
+        }
+
+            .dl-horizontal dt {
+                font-weight: bold;
+            }
+
+        .btn {
+            background-color: #008080; /* Teal button color */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-right: 5px; /* Space between buttons */
+            transition: background-color 0.3s; /* Transition effect */
+        }
+
+            .btn:hover {
+                background-color: #FF7F50; /* Coral color on hover */
+            }
+
+        .text-center {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">My Logo</div>
+        <ul class="nav-links">
+            <li><a href="/Home/Display">Categories</a></li>
+            <li><a href="/Home/Create">Create Category</a></li>
+            <li><a href="/Product/Create">Products</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h2>Product Details</h2>
+
+        <div>
+            <h4>Product</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProductId)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ProductId)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProductName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ProductName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Category)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Category.CName)
+                </dd>
+            </dl>
+        </div>
+
+        <div class="text-center">
+            @Html.ActionLink("Back to List", "Display", "Product", null, new { @class = "btn" })
+        </div>
+    </div>
+</body>
+</html>

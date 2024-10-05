@@ -1,0 +1,224 @@
+﻿@model IEnumerable<CrudOperations.Models.Product>
+@{
+    ViewBag.Title = "Product Display";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #008080; /* Primary Teal Color */
+            padding: 1rem;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+            .nav-links li {
+                margin: 0 15px;
+            }
+
+            .nav-links a {
+                text-decoration: none;
+                color: white;
+                font-size: 1.1rem;
+                transition: color 0.3s, background-color 0.3s;
+                padding: 8px 15px;
+                border-radius: 5px;
+            }
+
+                .nav-links a:hover {
+                    background-color: #FF7F50; /* Coral Color for Hover */
+                    color: white;
+                }
+
+        h2 {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .table {
+            width: 80%;
+            margin: auto; /* Center the table */
+            border-collapse: collapse;
+        }
+
+            .table th, .table td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: left;
+            }
+
+            .table th {
+                background-color: #008080; /* Teal background for header */
+                color: white; /* White text for header */
+            }
+
+            .table tr:nth-child(even) {
+                background-color: #f2f2f2; /* Zebra striping for rows */
+            }
+
+        .btn {
+            background-color: #008080; /* Teal button color */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-right: 5px; /* Space between buttons */
+            transition: background-color 0.3s; /* Transition effect */
+        }
+
+        .btn-warning {
+            background-color: #FFC107; /* Yellow for edit button */
+            color: black; /* Black text for contrast */
+        }
+
+            .btn-warning:hover {
+                background-color: #FFCA2C; /* Darker yellow on hover */
+            }
+
+        .btn-info {
+            background-color: #17A2B8; /* Info color */
+        }
+
+            .btn-info:hover {
+                background-color: #138496; /* Darker info color on hover */
+            }
+
+        .btn-danger {
+            background-color: #DC3545; /* Danger color */
+        }
+
+            .btn-danger:hover {
+                background-color: #C82333; /* Darker danger color on hover */
+            }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            list-style: none;
+        }
+
+            .pagination li {
+                margin: 0 5px;
+            }
+
+                .pagination li.active a {
+                    background-color: #008080; /* Teal for active page */
+                    color: white; /* White text for active page */
+                }
+
+        .page-link {
+            text-decoration: none;
+            color: #007BFF; /* Link color */
+            padding: 10px 15px;
+            border: 1px solid #007BFF; /* Border for pagination links */
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+            .page-link:hover {
+                background-color: #007BFF; /* Darker blue on hover */
+                color: white; /* White text on hover */
+            }
+
+        .btn-primary {
+            margin-top: 20px;
+            background-color: #008080; /* Teal button color */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s; /* Transition effect */
+        }
+
+            .btn-primary:hover {
+                background-color: #FF7F50; /* Coral color on hover */
+            }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">My Logo</div>
+        <ul class="nav-links">
+            <li><a href="/Home/Display">Categories</a></li>
+            <li><a href="/Home/Create">Create Category</a></li>
+            <li><a href="/Product/Create">Products</a></li>
+        </ul>
+    </nav>
+
+    <h2>Product List</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Category</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.ProductId</td>
+                    <td>@product.ProductName</td>
+                    <td>@product.Category.CName</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = product.ProductId }, new { @class = "btn btn-warning" }) |
+                        @Html.ActionLink("Details", "Details", new { id = product.ProductId }, new { @class = "btn btn-info" }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = product.ProductId }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Pagination Controls -->
+    <nav>
+        <ul class="pagination">
+            @for (int i = 1; i <= ViewBag.TotalPages; i++)
+            {
+                <li class="@(i == ViewBag.CurrentPage ? "active" : "")">
+                    @Html.ActionLink(i.ToString(), "Display", new { page = i }, new { @class = "page-link" })
+                </li>
+            }
+        </ul>
+    </nav>
+
+    <div>
+        @Html.ActionLink("Create New Product", "Create", null, new { @class = "btn btn-primary" })
+    </div>
+</body>
+</html>
