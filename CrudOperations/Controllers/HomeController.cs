@@ -9,7 +9,7 @@ namespace CrudOperations.Controllers
     {
         private CategoryContext db = new CategoryContext();
 
-        // GET: Home/Index
+       
         public ActionResult Index()
         {
             return View(db.Categories.ToList());
