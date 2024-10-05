@@ -15,13 +15,13 @@ namespace CrudOperations.Controllers
             return View(db.Categories.ToList());
         }
 
-        // GET: Home/Create
+        
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Home/Create
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Category category)
@@ -30,19 +30,19 @@ namespace CrudOperations.Controllers
             {
                 db.Categories.Add(category);
                 db.SaveChanges();
-                return RedirectToAction("Display"); // Redirecting to Display action after creation
+                return RedirectToAction("Display"); 
             }
 
             return View(category);
         }
 
-        // GET: Home/Display
+      
         public ActionResult Display()
         {
             return View(db.Categories.ToList());
         }
 
-        // GET: Home/Edit/5
+   
         public ActionResult Edit(int id)
         {
             Category category = db.Categories.Find(id);
@@ -53,7 +53,7 @@ namespace CrudOperations.Controllers
             return View(category);
         }
 
-        // POST: Home/Edit/5
+     
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Category category)
@@ -67,7 +67,7 @@ namespace CrudOperations.Controllers
             return View(category);
         }
 
-        // GET: Home/Details/5
+       
         public ActionResult Details(int id)
         {
             Category category = db.Categories.Find(id);
@@ -78,7 +78,7 @@ namespace CrudOperations.Controllers
             return View(category);
         }
 
-        // GET: Home/Delete/5
+      
         public ActionResult Delete(int id)
         {
             Category category = db.Categories.Find(id);
@@ -89,7 +89,7 @@ namespace CrudOperations.Controllers
             return View(category);
         }
 
-        // POST: Home/Delete/5
+     
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
