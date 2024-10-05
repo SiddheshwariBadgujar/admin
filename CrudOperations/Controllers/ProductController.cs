@@ -1,4 +1,4 @@
-﻿using CrudOperations.Models;
+using CrudOperations.Models;
 using System;
 using System.Data.Entity;
 using System.Linq;
@@ -10,17 +10,17 @@ namespace CrudOperations.Controllers
     public class ProductController : Controller
     {
         private ProductContext db = new ProductContext();
-        private const int PageSize = 10; // Set the desired page size
+        private const int PageSize = 10; 
 
-        // GET: Product/Create
+       
         public ActionResult Create()
         {
-            // Correctly creating the SelectList
+            
             ViewBag.CategoryId = new SelectList(db.Categories.ToList(), "CId", "CName");
             return View();
         }
 
-        // POST: Product/Create
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Product product)
@@ -29,22 +29,21 @@ namespace CrudOperations.Controllers
             {
                 db.Products.Add(product);
                 db.SaveChanges();
-                return RedirectToAction("Display", "Product"); // Redirect to the Display action
+                return RedirectToAction("Display", "Product"); 
             }
 
-            // Ensure the SelectList is populated again in case of an error
+            
             ViewBag.CategoryId = new SelectList(db.Categories.ToList(), "CId", "CName", product.CategoryId);
             return View(product);
         }
 
-        // GET: Product/Display
-        // GET: Product/Display
+       
         public ActionResult Display(int page = 1)
         {
-            var totalProducts = db.Products.Count(); // Get the total count of products
-            var totalPages = (int)Math.Ceiling((double)totalProducts / PageSize); // Calculate total pages
+            var totalProducts = db.Products.Count(); 
+            var totalPages = (int)Math.Ceiling((double)totalProducts / PageSize); 
 
-            // Fetch products for the current page
+           
             var products = db.Products
                 .Include(p => p.Category)
                 .OrderBy(p => p.ProductId)
@@ -52,14 +51,14 @@ namespace CrudOperations.Controllers
                 .Take(PageSize)
                 .ToList();
 
-            ViewBag.TotalPages = totalPages; // Pass total pages to the view
-            ViewBag.CurrentPage = page; // Pass current page to the view
+            ViewBag.TotalPages = totalPages; 
+            ViewBag.CurrentPage = page; 
 
             return View(products);
         }
 
 
-        // GET: Product/Edit/5
+       
         public ActionResult Edit(int id)
         {
             var product = db.Products.Find(id);
@@ -68,12 +67,12 @@ namespace CrudOperations.Controllers
                 return HttpNotFound();
             }
 
-            // Populate categories for the dropdown
+   
             ViewBag.CategoryId = new SelectList(db.Categories.ToList(), "CId", "CName", product.CategoryId);
             return View(product);
         }
 
-        // POST: Product/Edit/5
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Product product)
@@ -82,15 +81,14 @@ namespace CrudOperations.Controllers
             {
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Display", "Product"); // Redirect to Display after editing
+                return RedirectToAction("Display", "Product"); 
             }
 
-            // Ensure the SelectList is populated again in case of an error
+           
             ViewBag.CategoryId = new SelectList(db.Categories.ToList(), "CId", "CName", product.CategoryId);
             return View(product);
         }
 
-        // GET: Product/Details/5
         public ActionResult Details(int id)
         {
             var product = db.Products.Include(p => p.Category).SingleOrDefault(p => p.ProductId == id);
@@ -102,7 +100,7 @@ namespace CrudOperations.Controllers
             return View(product);
         }
 
-        // GET: Product/Delete/5
+       
         public ActionResult Delete(int id)
         {
             var product = db.Products.Find(id);
@@ -114,7 +112,7 @@ namespace CrudOperations.Controllers
             return View(product);
         }
 
-        // POST: Product/Delete/5
+       
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -122,7 +120,7 @@ namespace CrudOperations.Controllers
             var product = db.Products.Find(id);
             db.Products.Remove(product);
             db.SaveChanges();
-            return RedirectToAction("Display", "Product"); // Redirect to Display after deletion
+            return RedirectToAction("Display", "Product"); 
         }
 
         protected override void Dispose(bool disposing)
