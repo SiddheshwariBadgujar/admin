@@ -16,8 +16,8 @@ namespace CrudOperations.Models
         public string ProductName { get; set; }
 
         [ForeignKey("Category")]
-        public int CategoryId { get; set; }  // Foreign key for Category
+        public int CategoryId { get; set; }  
 
-        public virtual Category Category { get; set; } // Navigation property
+        public virtual Category Category { get; set; } 
     }
 }
