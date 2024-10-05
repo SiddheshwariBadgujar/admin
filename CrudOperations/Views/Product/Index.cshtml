@@ -1,4 +1,4 @@
-﻿@model  List<CrudOperations.Models.Category>
+@model  List<CrudOperations.Models.Category>
 
 @{
     ViewBag.Title = "Index";
@@ -25,7 +25,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #008080; /* Primary Teal Color */
+            background-color: #008080; 
             padding: 1rem;
         }
 
@@ -54,11 +54,11 @@
         }
 
         .nav-links a:hover {
-            background-color: #FF7F50; /* Coral Color for Hover */
+            background-color: #FF7F50; 
             color: white;
         }
 
-        /* Hamburger Menu */
+       
         .hamburger {
             display: none;
             flex-direction: column;
@@ -72,17 +72,7 @@
             margin: 3px 0;
         }
 
-        /* Responsive Styles */
-        @*@media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 60px;
-                right: 0;
-                background-color: #008080; /* Same Teal for mobile menu */
-                width: 100%;
-            }*@
+       
 
             .nav-links.active {
                 display: flex;
