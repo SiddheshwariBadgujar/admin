@@ -14,6 +14,10 @@ Output:-
 ![image](https://github.com/user-attachments/assets/2dbae507-9003-4456-b3d1-ba0760cb97ca)
 ![image](https://github.com/user-attachments/assets/305eca40-7a06-49ce-ad9c-be5882be5a81)
 ![image](https://github.com/user-attachments/assets/a30c69bd-8b73-4933-9289-6aad7320b92a)
+![image](https://github.com/user-attachments/assets/7575acc1-02b3-42a5-809a-2dcb5a9b585e)
+![image](https://github.com/user-attachments/assets/80edbcf1-5460-4ae1-8db2-c148564e7724)
+
+
 
 
 
